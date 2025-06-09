@@ -1,0 +1,177 @@
+/* Elevator Simulation Styles */
+
+/* General Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/* Layout Structure */
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.floor-labels {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  width: 80px;
+}
+
+.floor-label {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.elevator-grid {
+  border: 1px solid #ddd;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+}
+
+.buttons-column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  width: 100px;
+}
+
+/* Floor Structure */
+.floor-row {
+  display: flex;
+  height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Elevator Slots */
+.elevator-slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elevator-slot:not(:last-child) {
+  border-right: 1px solid #ddd;
+}
+
+/* Elevator */
+.elevator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Moving Elevator Animation */
+.elevator.moving {
+  position: absolute;
+  z-index: 10;
+  background-color: #ffcdd2;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.elevator.arrived {
+  background-color: #e8f5e9;
+}
+
+/* Call Buttons */
+.call-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 2px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+
+.call-button:hover {
+  background-color: #558b2f;
+}
+
+.call-button.waiting {
+  background-color: #f44336;
+}
+
+.call-button.arrived {
+  background-color: #8BC34A;
+}
+
+/* Elevator Icons */
+.elevator svg {
+  display: block;
+  margin: 0 auto;
+  width: 20px;
+  height: 20px;
+}
+
+.elevator .idle svg {
+  fill: #000;
+}
+
+.elevator .moving svg {
+  fill: #f44336;
+}
+
+.elevator .arrived svg {
+  fill: #4CAF50;
+}
+
+/* Time Indicator */
+.time-indicator {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  background-color: rgba(255, 235, 235, 0.9);
+  border-radius: 10px;
+  color: #f44336;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  min-width: 50px;
+  /* Hide when empty */
+  display: none;
+}
+
+/* Show time indicator only when it has content */
+.time-indicator:not(:empty) {
+  display: block;
+} 
