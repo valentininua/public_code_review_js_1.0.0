@@ -1,6 +1,18 @@
 // NEW VERSION
 
- 
+// Debounce utility function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // Audio Service
 class AudioService {
   constructor() {
@@ -345,7 +357,8 @@ class ElevatorUIManager {
     const buttons = this.container.querySelectorAll('.call-button');
     
     buttons.forEach(button => {
-      button.addEventListener('click', () => {
+      // Create a debounced handler for each button
+      const debouncedHandler = debounce(() => {
         const targetFloor = parseInt(button.dataset.floor);
         
         // Show waiting state
@@ -374,7 +387,9 @@ class ElevatorUIManager {
           });
           console.log(`All elevators busy, queued call to floor ${targetFloor}`);
         }
-      });
+      }, 500); // 500ms debounce delay
+
+      button.addEventListener('click', debouncedHandler);
     });
   }
 }
