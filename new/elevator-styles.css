@@ -174,4 +174,30 @@ h1 {
 /* Show time indicator only when it has content */
 .time-indicator:not(:empty) {
   display: block;
+}
+
+/* Direction Indicator */
+.direction-indicator {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  min-width: 20px;
+}
+
+/* Direction indicator colors based on elevator status */
+.elevator[data-status="moving"] .direction-indicator {
+  color: #f44336;
+}
+
+.elevator[data-status="arrived"] .direction-indicator {
+  color: #4CAF50;
+}
+
+.elevator[data-status="idle"] .direction-indicator {
+  color: #555;
 } 
